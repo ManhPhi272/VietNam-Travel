@@ -6,6 +6,8 @@ import axios from "axios";
 import { server } from "../../server";
 import { toast } from "react-toastify";
 
+import logo from "../../Assests/logo-viet-nam-travel-removebg-preview1.png";
+
 const Login = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
@@ -25,9 +27,9 @@ const Login = () => {
         { withCredentials: true }
       )
       .then((res) => {
-        toast.success("Login Success!");
+        toast.success("Đăng nhập thành công!");
         navigate("/");
-        window.location.reload(true); 
+        window.location.reload(true);
       })
       .catch((err) => {
         toast.error(err.response.data.message);
@@ -37,8 +39,13 @@ const Login = () => {
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col justify-center py-12 sm:px-6 lg:px-8">
       <div className="sm:mx-auto sm:w-full sm:max-w-md">
+        <div className="ml-24 text-center">
+          <Link to="/">
+            <img src={logo} alt="" />
+          </Link>
+        </div>
         <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
-          Login to your account
+          Đăng nhập thành viên
         </h2>
       </div>
       <div className="mt-8 sm:mx-auto sm:w-full sm:max-w-md">
@@ -49,7 +56,7 @@ const Login = () => {
                 htmlFor="email"
                 className="block text-sm font-medium text-gray-700"
               >
-                Email address
+                Email
               </label>
               <div className="mt-1">
                 <input
@@ -68,7 +75,7 @@ const Login = () => {
                 htmlFor="password"
                 className="block text-sm font-medium text-gray-700"
               >
-                Password
+                Mật khẩu
               </label>
               <div className="mt-1 relative">
                 <input
@@ -107,7 +114,7 @@ const Login = () => {
                   htmlFor="remember-me"
                   className="ml-2 block text-sm text-gray-900"
                 >
-                  Remember me
+                  Lưu thông tin đăng nhập
                 </label>
               </div>
               <div className="text-sm">
@@ -115,7 +122,7 @@ const Login = () => {
                   href=".forgot-password"
                   className="font-medium text-blue-600 hover:text-blue-500"
                 >
-                  Forgot your password?
+                  Quên mật khẩu?
                 </a>
               </div>
             </div>
@@ -124,13 +131,13 @@ const Login = () => {
                 type="submit"
                 className="group relative w-full h-[40px] flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700"
               >
-                Submit
+                Đăng nhập
               </button>
             </div>
             <div className={`${styles.noramlFlex} w-full`}>
-              <h4>Not have any account?</h4>
+              <h4>Bạn chưa có tài khoản?</h4>
               <Link to="/sign-up" className="text-blue-600 pl-2">
-                Sign Up
+                Đăng ký
               </Link>
             </div>
           </form>

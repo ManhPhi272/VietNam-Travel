@@ -36,7 +36,7 @@ const Faq = () => {
             onClick={() => toggleTab(2)}
           >
             <span className="text-lg font-medium text-gray-900">
-              What is your return policy?
+              Khi làm Visa cần chuẩn bị những gì?
             </span>
             {activeTab === 2 ? (
               <svg
@@ -71,10 +71,34 @@ const Faq = () => {
           {activeTab === 2 && (
             <div className="mt-4">
               <p className="text-base text-gray-500">
-                If you're not satisfied with your purchase, we accept returns
-                within 30 days of delivery. To initiate a return, please email
-                us at support@myecommercestore.com with your order number and a
-                brief explanation of why you're returning the item.
+                - 02 ảnh nền trắng 3,5 x 4,5
+                <br />
+                - Hộ chiếu bản gốc + hộ chiếu cũ nếu có
+                <br />
+                - Sổ hộ khẩu (sao y bản chính)
+                <br />
+                - Đăng kí kết hôn (nếu đã lập gia đình) (sao y bản chính)
+                <br />
+                - Giấy xác nhận công việc hiện tại
+                <br />
+                + Nếu là nhân viên: Hợp đồng lao động hoặc quyết định bổ nhiệm,
+                Xác nhận lương 3 tháng gần nhất, Đơn xin nghỉ phép du lịch , Sao
+                kê tài khoản lương 03 tháng gần nhất (nếu có)
+                <br />
+                + Nếu là chủ doanh nghiệp: Đăng kí kinh doanh, xác nhận đóng
+                thuế, sao kê tài khoản của công ty 03 tháng gần nhất
+                <br />
+                + Nếu là trẻ em dưới 18 tuổi: Giấy đồng ý cho đi du lịch của bố
+                và mẹ, bản sao hộ chiếu hoặc chứng minh thư của cha và mẹ, Giấy
+                khai sinh, Xác nhận là học sinh, đơn xin nghỉ học…
+                <br />
+                + Nếu đã nghỉ hưu: Quyết định nghỉ hưu, sổ hưu hoặc sao kê tài
+                khoản hưu
+                <br />
+                - Chứng minh tài chính cá nhân: Sổ tiết kiệm cá nhân có số dư
+                hiện tại từ 100 triệu đồng, sao kê tài khoản ngân hàng, giấy tờ
+                nhà đất, xe hơi, cổ phiếu, cổ phần…
+                <br />- Thư mời từ các tổ chức hoặc cá nhân tại nơi định đến.
               </p>
             </div>
           )}
@@ -86,7 +110,7 @@ const Faq = () => {
             onClick={() => toggleTab(3)}
           >
             <span className="text-lg font-medium text-gray-900">
-              How do I track my order?
+              Điều kiện đăng ký tour như thế nào?
             </span>
             {activeTab === 3 ? (
               <svg
@@ -121,9 +145,12 @@ const Faq = () => {
           {activeTab === 3 && (
             <div className="mt-4">
               <p className="text-base text-gray-500">
-                You can track your order by clicking the tracking link in your
-                shipping confirmation email, or by logging into your account on
-                our website and viewing the order details.
+                Để đăng ký đi tour Quý khách cần chuẩn bị Chứng minh nhân dân
+                (còn hạn sử dụng) đối với tour du lịch trong nước, và Hộ chiếu
+                (còn hạn trên 6 tháng) đối với tour du lịch nước ngoài, ngoài ra
+                đối với một số nước thì sẽ Quý khách sẽ phải chuẩn bị thêm hồ sơ
+                để xin visa, hồ sơ sẽ theo yêu cầu của Lãnh sự quán/ Đại sứ quán
+                quy định.
               </p>
             </div>
           )}
@@ -135,7 +162,8 @@ const Faq = () => {
             onClick={() => toggleTab(4)}
           >
             <span className="text-lg font-medium text-gray-900">
-              How do I contact customer support?
+              Khách lớn tuổi đi tour cần điều kiện gì? Tôi đăng ký mua tour trực
+              tiếp khách lớn tuổi mà không được?
             </span>
             {activeTab === 4 ? (
               <svg
@@ -170,9 +198,15 @@ const Faq = () => {
           {activeTab === 4 && (
             <div className="mt-4">
               <p className="text-base text-gray-500">
-                You can contact our customer support team by emailing us at
-                support@myecommercestore.com, or by calling us at (555) 123-4567
-                between the hours of 9am and 5pm EST, Monday through Friday.
+                Đối với khách nữ từ 55 tuổi trở lên và khách nam từ 60 trở lên:
+                VietNam Travel khuyến cáo nên có người thân dưới 55 tuổi (đầy đủ
+                sức khỏe) đi cùng để có thể kịp thời hỗ trợ nếu có vấn đề xảy ra
+                khi đi tour. Riêng khách từ 70 tuổi trở lên: Bắt buộc phải có
+                người thân dưới 55 tuổi (đầy đủ sức khỏe) đi cùng và nộp kèm
+                giấy khám sức khỏe, trong đó có xác nhận đủ sức khỏe để đi du
+                lịch của bác sĩ + Giấy cam kết sức khỏe theo mẫu qui định của
+                công ty. <br /> Khách từ 80 tuổi trở lên thì không có chế độ bảo
+                hiểm nên Vietravel thường không nhận khách ở độ tuổi này.
               </p>
             </div>
           )}
@@ -184,7 +218,8 @@ const Faq = () => {
             onClick={() => toggleTab(5)}
           >
             <span className="text-lg font-medium text-gray-900">
-              Can I change or cancel my order?
+              Tôi có thể thanh toán tiền mặt ở đâu? Có cần phải đến công ty
+              không?
             </span>
             {activeTab === 5 ? (
               <svg
@@ -219,10 +254,13 @@ const Faq = () => {
           {activeTab === 5 && (
             <div className="mt-4">
               <p className="text-base text-gray-500">
-                Unfortunately, once an order has been placed, we are not able to
-                make changes or cancellations. If you no longer want the items
-                you've ordered, you can return them for a refund within 30 days
-                of delivery.
+                Với trường hợp thanh toán bằng tiền mặt hoặc cà thẻ ngân hàng,
+                quý khách có thể thanh toán online bằng các loại thẻ như:
+                paypal, master card... hoặc tại Trụ sở chính: Số 3 phố Cầu Giấy,
+                P.Láng Thượng, Q.Đống Đa, Hà Nội hoặc bất kì Văn phòng nào của
+                VietNam Travel. Hiện tại, VietNam Travel đang có 04 văn phòng
+                bán lẻ tại các quận thành phố Hà Nội và Hồ Chí Minh và các chi
+                nhánh tại các tỉnh thành Việt Nam.
               </p>
             </div>
           )}
@@ -234,7 +272,7 @@ const Faq = () => {
             onClick={() => toggleTab(6)}
           >
             <span className="text-lg font-medium text-gray-900">
-              Do you offer international shipping?
+              Giá tour đã bao gồm VAT chưa? Tôi muốn xuất hóa đơn được không?
             </span>
             {activeTab === 6 ? (
               <svg
@@ -269,7 +307,12 @@ const Faq = () => {
           {activeTab === 6 && (
             <div className="mt-4">
               <p className="text-base text-gray-500">
-                Currently, we only offer shipping within the United States.
+                Tất cả các tour đều có quy định rất rõ cho từng tour về thuế
+                VAT, trường hợp khách có yêu cầu xuất hóa đơn, vui lòng cung cấp
+                đầy đủ thông tin xuất hóa đơn ngay khi đăng ký tour và thanh
+                toán hết. Hóa đơn sẽ được xuất sau khi kết thúc tour và được gửi
+                về địa chỉ theo yêu cầu của quý khách hoặc lấy trực tiếp. Không
+                nhận xuất hóa đơn sau khi tour khởi hành.
               </p>
             </div>
           )}
@@ -281,7 +324,7 @@ const Faq = () => {
             onClick={() => toggleTab(7)}
           >
             <span className="text-lg font-medium text-gray-900">
-              What payment methods do you accept?
+              Điểm tham quan ở nước ngoài có an toàn hay không?
             </span>
             {activeTab === 7 ? (
               <svg
@@ -316,8 +359,11 @@ const Faq = () => {
           {activeTab === 7 && (
             <div className="mt-4">
               <p className="text-base text-gray-500">
-                We accept visa,mastercard,paypal payment method also we have
-                cash on delivery system.
+                Điểm tham quan tại nước ngoài trong các chương trình du lịch của
+                Vietravel đều là những điểm nổi bật, thu hút nhiều khách tham
+                quan trên Thế giới. Do vậy, Quý khách lưu ý cẩn thận tư trang cá
+                nhân khi ở chỗ đông người, luôn đi chung với đoàn, không nên tự
+                ý rời khỏi đoàn để đảm bảo an toàn.
               </p>
             </div>
           )}

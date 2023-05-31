@@ -16,12 +16,16 @@ const productSchema = new mongoose.Schema({
   tags: {
     type: String,
   },
+  schedule: {
+    type: String,
+    required: [true, "Please enter your product schedule!"],
+  },
   originalPrice: {
     type: Number,
   },
   discountPrice: {
     type: Number,
-    required: [true, "Please enter your product price!"],
+
   },
   stock: {
     type: Number,
@@ -46,10 +50,10 @@ const productSchema = new mongoose.Schema({
       productId: {
         type: String,
       },
-      createdAt:{
+      createdAt: {
         type: Date,
         default: Date.now(),
-      }
+      },
     },
   ],
   ratings: {
