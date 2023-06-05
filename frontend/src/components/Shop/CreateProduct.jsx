@@ -21,6 +21,7 @@ const CreateProduct = () => {
   const [discountPrice, setDiscountPrice] = useState();
   const [stock, setStock] = useState();
   const [schedule, setSchedule] = useState("");
+  const [maxGroupSize, setMaxGroupSize] = useState("");
 
   useEffect(() => {
     if (error) {
@@ -55,6 +56,7 @@ const CreateProduct = () => {
     newForm.append("category", category);
     newForm.append("tags", tags);
     newForm.append("schedule", schedule);
+    newForm.append("maxGroupSize", maxGroupSize);
     newForm.append("originalPrice", originalPrice);
     newForm.append("discountPrice", discountPrice);
     newForm.append("stock", stock);
@@ -84,7 +86,7 @@ const CreateProduct = () => {
         <br />
         <div>
           <label className="pb-2">
-            Mô tả <span className="text-red-500">*</span>
+            Mô tả lịch trình <span className="text-red-500">*</span>
           </label>
           <textarea
             cols="30"
@@ -128,6 +130,21 @@ const CreateProduct = () => {
         </div>
         <br />
         <div>
+          <label className="pb-2">
+            Số lượng khách tối đa trên 1 tour
+            <span className="text-red-500">*</span>
+          </label>
+          <input
+            type="text"
+            name="maxgroupsize"
+            value={maxGroupSize}
+            className="mt-2 appearance-none block w-full px-3 h-[35px] border border-gray-300 rounded-[3px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+            onChange={(e) => setMaxGroupSize(e.target.value)}
+            placeholder="Enter your tour max group size..."
+          />
+        </div>
+        <br />
+        <div>
           <label className="pb-2">Tags</label>
           <input
             type="text"
@@ -138,11 +155,12 @@ const CreateProduct = () => {
             placeholder="Enter your tour tags..."
           />
         </div>
+        <br />
         <div>
           <label className="pb-2">Ngày khởi hành</label>
           <input
             type="text"
-            name="tags"
+            name="schedule"
             value={schedule}
             className="mt-2 appearance-none block w-full px-3 h-[35px] border border-gray-300 rounded-[3px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
             onChange={(e) => setSchedule(e.target.value)}

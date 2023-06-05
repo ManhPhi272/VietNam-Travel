@@ -19,6 +19,9 @@ import { addTocart } from "../../redux/actions/cart";
 import { toast } from "react-toastify";
 import Ratings from "./Ratings";
 import axios from "axios";
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
+import { addMonths } from "date-fns";
 
 const ProductDetails = ({ data }) => {
   const { wishlist } = useSelector((state) => state.wishlist);
@@ -28,6 +31,7 @@ const ProductDetails = ({ data }) => {
   const [count, setCount] = useState(1);
   const [click, setClick] = useState(false);
   const [select, setSelect] = useState(0);
+  const [startDate, setStartDate] = useState(new Date());
   const navigate = useNavigate();
   const dispatch = useDispatch();
   useEffect(() => {
@@ -40,7 +44,11 @@ const ProductDetails = ({ data }) => {
   }, [data, wishlist]);
 
   const incrementCount = () => {
-    setCount(count + 1);
+    if (count >= data.maxGroupSize) {
+      toast.error("Đã vượt quá số lượng khách trên một tour");
+    } else {
+      setCount(count + 1);
+    }
   };
 
   const decrementCount = () => {
@@ -149,14 +157,25 @@ const ProductDetails = ({ data }) => {
               </div>
               <div className="w-full 800px:w-[50%] pt-5 ml-8">
                 <h1 className={`${styles.productTitle}`}>{data.name}</h1>
-                <h1>Tags: {data.tags}</h1>
+                <h1> Tags: {data.tags}</h1>
                 <h1>Ngày khởi hành: {data.schedule}</h1>
+                <h1>Số khách tối đa trên 1 tour: {data.maxGroupSize} khách</h1>
+                <h1 className="flex pt-3">
+                  Khởi hành:
+                  <DatePicker
+                    selected={startDate}
+                    onChange={(date) => setStartDate(date)}
+                    minDate={new Date()}
+                    maxDate={addMonths(new Date(), 5)}
+                    showDisabledMonthNavigation
+                  />
+                </h1>
                 <div className="flex pt-3">
                   <h4 className={`${styles.productDiscountPrice}`}>
                     {data.discountPrice}$ /khách
                   </h4>
                   <h3 className={`${styles.price}`}>
-                    {data.originalPrice ? data.originalPrice + "$" : null}{" "}
+                    {data.originalPrice ? data.originalPrice + "$" : null}
                     /khách
                   </h3>
                 </div>
@@ -184,13 +203,14 @@ const ProductDetails = ({ data }) => {
                     bay
                   </span>
                   <span className=" flex items-center">
-                    <AiOutlineCheck className="ml-1 text-green-500" /> Xe đưa đón
+                    <AiOutlineCheck className="ml-1 text-green-500" /> Xe đưa
+                    đón
                   </span>
                 </div>
 
                 <div className="flex items-center mt-12 justify-between pr-3">
                   <div>
-                  <div className="mb-4">Chọn số khách: </div>
+                    <div className="mb-4">Chọn số khách: </div>
                     <button
                       className="bg-gradient-to-r from-teal-400 to-teal-500 text-white font-bold rounded-l px-4 py-2 shadow-lg hover:opacity-75 transition duration-300 ease-in-out"
                       onClick={decrementCount}

@@ -20,12 +20,15 @@ const productSchema = new mongoose.Schema({
     type: String,
     required: [true, "Please enter your product schedule!"],
   },
+  maxGroupSize: {
+    type: Number,
+    required: [true, "Please enter your product max group size!"],
+  },
   originalPrice: {
     type: Number,
   },
   discountPrice: {
     type: Number,
-
   },
   stock: {
     type: Number,

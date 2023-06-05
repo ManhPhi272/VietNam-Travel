@@ -100,9 +100,13 @@ const CartSingle = ({ data, quantityChangeHandler, removeFromCartHandler }) => {
     if (data.stock < value) {
       toast.error("Tour hiện tại không còn!");
     } else {
-      setValue(value + 1);
-      const updateCartData = { ...data, qty: value + 1 };
-      quantityChangeHandler(updateCartData);
+      if (value >= data.maxGroupSize) {
+        toast.error("Đã vượt quá số lượng khách trên một tour");
+      } else {
+        setValue(value + 1);
+        const updateCartData = { ...data, qty: value + 1 };
+        quantityChangeHandler(updateCartData);
+      }
     }
   };
 

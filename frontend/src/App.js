@@ -182,7 +182,7 @@ const App = () => {
           }
         />
         <Route
-          path="/dashboard-create-product"
+          path="/dashboard-create-tour"
           element={
             <SellerProtectedRoute>
               <ShopCreateProduct />
@@ -215,7 +215,7 @@ const App = () => {
           }
         />
         <Route
-          path="/dashboard-products"
+          path="/dashboard-tours"
           element={
             <SellerProtectedRoute>
               <ShopAllProducts />
