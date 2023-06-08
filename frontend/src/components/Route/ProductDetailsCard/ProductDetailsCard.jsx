@@ -11,6 +11,7 @@ import { backend_url } from "../../../server";
 import styles from "../../../styles/styles";
 import { useDispatch, useSelector } from "react-redux";
 import { toast } from "react-toastify";
+import Ratings from "../../Products/Ratings";
 import { addTocart } from "../../../redux/actions/cart";
 import {
   addToWishlist,
@@ -27,14 +28,18 @@ const ProductDetailsCard = ({ setOpen, data }) => {
 
   const handleMessageSubmit = () => {};
 
+  const incrementCount = () => {
+    if (count >= data.maxGroupSize) {
+      toast.error("Đã vượt quá số lượng khách trên một tour");
+    } else {
+      setCount(count + 1);
+    }
+  };
+
   const decrementCount = () => {
     if (count > 1) {
       setCount(count - 1);
     }
-  };
-
-  const incrementCount = () => {
-    setCount(count + 1);
   };
 
   const addToCartHandler = (id) => {
@@ -98,7 +103,9 @@ const ProductDetailsCard = ({ setOpen, data }) => {
                       <h3 className={`${styles.shop_name}`}>
                         {data.shop.name}
                       </h3>
-                      <h5 className="pb-3 text-[15px]">(4.5) Ratings</h5>
+                      <h5 className="pb-3 text-[15px]">
+                        {data?.ratings} Ratings
+                      </h5>
                     </div>
                   </Link>
                 </div>
@@ -110,14 +117,20 @@ const ProductDetailsCard = ({ setOpen, data }) => {
                     Gửi tin nhắn <AiOutlineMessage className="ml-1" />
                   </span>
                 </div>
-                <h5 className="text-[16px] text-[red] mt-5">(50) Đã đặt</h5>
+                <h5 className="text-[16px] text-[red] mt-5">
+                  {data?.sold_out} khách đã đặt
+                </h5>
               </div>
 
               <div className="w-full 800px:w-[50%] pt-5 pl-[5px] pr-[5px]">
                 <h1 className={`${styles.productTitle} text-[20px]`}>
                   {data.name}
                 </h1>
-                <p>{data.description}</p>
+                <p>
+                  {data.description.length > 50
+                    ? data.description.slice(0, 1000) + "..."
+                    : data.description}
+                </p>
 
                 <div className="flex pt-3">
                   <h4 className={`${styles.productDiscountPrice}`}>

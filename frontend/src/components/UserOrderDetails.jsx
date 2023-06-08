@@ -122,9 +122,14 @@ const UserOrderDetails = () => {
               <div className="w-full">
                 <h5 className="pl-3 text-[20px]">{item.name}</h5>
                 <h5 className="pl-3 text-[20px] text-[#00000091]">
-                  US${item.discountPrice} x {item.qty}
+                  US${item.discountPrice}/khách x {item.qty}
                 </h5>
               </div>
+              <Link to={`${`/tour/${item._id}`}`}>
+                <div className="w-[300px] text-white bg-black h-[50px] my-3 flex items-center justify-center rounded-xl cursor-pointer">
+                  Xem thông tin tour đã đặt
+                </div>
+              </Link>
               {!item.isReviewed && data?.status === "Success" ? (
                 <div
                   className={`${styles.button} text-[#fff]`}
@@ -238,9 +243,15 @@ const UserOrderDetails = () => {
               " " +
               data?.shippingAddress.address2}
           </h4>
-          <h4 className=" text-[20px] font-[600]">Đất nước: {data?.shippingAddress.country}</h4>
-          <h4 className=" text-[20px] font-[600]">Thành phố: {data?.shippingAddress.city}</h4>
-          <h4 className=" text-[20px] font-[600]">SĐT: {data?.user?.phoneNumber}</h4>
+          <h4 className=" text-[20px] font-[600]">
+            Đất nước: {data?.shippingAddress.country}
+          </h4>
+          <h4 className=" text-[20px] font-[600]">
+            Thành phố: {data?.shippingAddress.city}
+          </h4>
+          <h4 className=" text-[20px] font-[600]">
+            SĐT: {data?.user?.phoneNumber}
+          </h4>
         </div>
         <div className="w-full 800px:w-[40%]">
           <h4 className="pt-3 text-[20px]">Trạng thái thanh toán:</h4>

@@ -1,6 +1,7 @@
 import { Button } from "@material-ui/core";
 import { DataGrid } from "@material-ui/data-grid";
 import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import { AiOutlineDelete, AiOutlineEye, AiFillEdit } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
@@ -8,20 +9,27 @@ import { getAllProductsShop } from "../../redux/actions/product";
 import { deleteProduct } from "../../redux/actions/product";
 import Loader from "../Layout/Loader";
 
-const AllProducts = () => {
+const AllProducts = ({ data }) => {
   const { products, isLoading } = useSelector((state) => state.products);
   const { seller } = useSelector((state) => state.seller);
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   useEffect(() => {
     dispatch(getAllProductsShop(seller._id));
   }, [dispatch]);
 
   const handleDelete = (id) => {
-    dispatch(deleteProduct(id));
-    window.location.reload();
+    if (window.confirm("Bạn có muốn xóa tour này không?")) {
+      dispatch(deleteProduct(id));
+      window.location.reload();
+    }
   };
+
+  // const handleUpdate = () => {
+  //   navigate(`/dashboard-update-tour/${data._id}`);
+  // };
 
   const columns = [
     { field: "id", headerName: "Mã tour", minWidth: 150, flex: 0.7 },
@@ -62,7 +70,7 @@ const AllProducts = () => {
       renderCell: (params) => {
         return (
           <>
-            <Link to={`/product/${params.id}`}>
+            <Link to={`/tour/${params.id}`}>
               <Button>
                 <AiOutlineEye size={20} />
               </Button>
@@ -98,9 +106,11 @@ const AllProducts = () => {
       renderCell: (params) => {
         return (
           <>
-            <button>
-              <AiFillEdit size={20} />
-            </button>
+            <Link to={`/dashboard-update-tour/${params.id}`}>
+              <Button>
+                <AiFillEdit size={20} />
+              </Button>
+            </Link>
           </>
         );
       },

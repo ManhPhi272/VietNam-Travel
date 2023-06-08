@@ -1,16 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, forwardRef } from "react";
 import {
   AiFillHeart,
   AiOutlineHeart,
   AiOutlineMessage,
   AiOutlineShoppingCart,
   AiOutlineCheck,
+  AiTwotoneCalendar,
 } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
 import { getAllProductsShop } from "../../redux/actions/product";
 import { backend_url, server } from "../../server";
 import styles from "../../styles/styles";
+import { dateTravel } from "../../static/data";
 import {
   addToWishlist,
   removeFromWishlist,
@@ -32,6 +34,7 @@ const ProductDetails = ({ data }) => {
   const [click, setClick] = useState(false);
   const [select, setSelect] = useState(0);
   const [startDate, setStartDate] = useState(new Date());
+  const [dateStart, setDateStart] = useState("");
   const navigate = useNavigate();
   const dispatch = useDispatch();
   useEffect(() => {
@@ -160,16 +163,35 @@ const ProductDetails = ({ data }) => {
                 <h1> Tags: {data.tags}</h1>
                 <h1>Ngày khởi hành: {data.schedule}</h1>
                 <h1>Số khách tối đa trên 1 tour: {data.maxGroupSize} khách</h1>
-                <h1 className="flex pt-3">
-                  Khởi hành:
+                <div className="pt-3">
+                  Khởi hành
                   <DatePicker
+                    className="border-2 border-indigo-600"
+                    showIcon
                     selected={startDate}
                     onChange={(date) => setStartDate(date)}
                     minDate={new Date()}
                     maxDate={addMonths(new Date(), 5)}
+                    dateFormat="dd/MM/yyyy"
                     showDisabledMonthNavigation
                   />
-                </h1>
+                </div>
+                {/* <div>
+                  <h1>abc</h1>
+                  <select
+                    className="w-full mt-2 border h-[35px] rounded-[5px]"
+                    value={dateStart}
+                    onChange={(e) => setDateStart(e.target.value)}
+                  >
+                    <option value="Choose a category">Choose a category</option>
+                    {dateTravel &&
+                      dateTravel.map((i) => (
+                        <option value={i.date} key={i.date}>
+                          {i.date} <br />
+                        </option>
+                      ))}
+                  </select>
+                </div> */}
                 <div className="flex pt-3">
                   <h4 className={`${styles.productDiscountPrice}`}>
                     {data.discountPrice}$ /khách

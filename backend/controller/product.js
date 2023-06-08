@@ -57,6 +57,49 @@ router.get(
   })
 );
 
+// get single product details
+router.get(
+  "/get-single-product/:id",
+  catchAsyncErrors(async (req, res, next) => {
+    try {
+      const product = await Product.findById(req.params.id);
+
+      res.status(201).json({
+        success: true,
+        product,
+      });
+    } catch (error) {
+      return next(new ErrorHandler(error, 400));
+    }
+  })
+);
+
+// update product of a shop
+router.put(
+  "/update-shop-product/:id",
+  isSeller,
+  catchAsyncErrors(async (req, res, next) => {
+    const productId = req.params.id;
+
+    try {
+      const updateTour = await Product.findByIdAndUpdate(
+        productId,
+        {
+          $set: req.body,
+        },
+        { new: true }
+      );
+      res.status(200).json({
+        success: true,
+        message: "Successfully updated",
+        data: updateTour,
+      });
+    } catch (error) {
+      return next(new ErrorHandler(error, 400));
+    }
+  })
+);
+
 // delete product of a shop
 router.delete(
   "/delete-shop-product/:id",

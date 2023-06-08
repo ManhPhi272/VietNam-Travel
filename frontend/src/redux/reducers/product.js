@@ -32,6 +32,19 @@ export const productReducer = createReducer(initialState, {
     state.error = action.payload;
   },
 
+  // update product of a shop
+  updateProductRequest: (state) => {
+    state.isLoading = true;
+  },
+  updateProductSuccess: (state, action) => {
+    state.isLoading = false;
+    state.message = action.payload;
+  },
+  updateProductFailed: (state, action) => {
+    state.isLoading = false;
+    state.error = action.payload;
+  },
+
   // delete product of a shop
   deleteProductRequest: (state) => {
     state.isLoading = true;
@@ -57,7 +70,20 @@ export const productReducer = createReducer(initialState, {
     state.isLoading = false;
     state.error = action.payload;
   },
-  
+
+  // get single product
+  getSingleProductRequest: (state) => {
+    state.isLoading = true;
+  },
+  getSingleProductSuccess: (state, action) => {
+    state.isLoading = false;
+    state.product = action.payload;
+  },
+  getSingleProductFailed: (state, action) => {
+    state.isLoading = false;
+    state.error = action.payload;
+  },
+
   clearErrors: (state) => {
     state.error = null;
   },

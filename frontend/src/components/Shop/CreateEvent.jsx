@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
-import { categoriesData } from "../../static/data";
+import { categories1Data } from "../../static/data";
 import { toast } from "react-toastify";
 import { createevent } from "../../redux/actions/event";
 
@@ -23,6 +23,7 @@ const CreateEvent = () => {
   const [stock, setStock] = useState();
   const [startDate, setStartDate] = useState(null);
   const [endDate, setEndDate] = useState(null);
+  const [maxGroupSize, setMaxGroupSize] = useState("");
 
   const handleStartDateChange = (e) => {
     const startDate = new Date(e.target.value);
@@ -79,6 +80,7 @@ const CreateEvent = () => {
     newForm.append("category", category);
     newForm.append("tags", tags);
     newForm.append("schedule", schedule);
+    newForm.append("maxGroupSize", maxGroupSize);
     newForm.append("originalPrice", originalPrice);
     newForm.append("discountPrice", discountPrice);
     newForm.append("stock", stock);
@@ -90,13 +92,13 @@ const CreateEvent = () => {
 
   return (
     <div className="w-[90%] 800px:w-[50%] bg-white  shadow h-[80vh] rounded-[4px] p-3 overflow-y-scroll">
-      <h5 className="text-[30px] font-Poppins text-center">Create Event</h5>
+      <h5 className="text-[30px] font-Poppins text-center">Tạo sự kiện</h5>
       {/* create event form */}
       <form onSubmit={handleSubmit}>
         <br />
         <div>
           <label className="pb-2">
-            Tên <span className="text-red-500">*</span>
+            Tên tour<span className="text-red-500">*</span>
           </label>
           <input
             type="text"
@@ -110,7 +112,7 @@ const CreateEvent = () => {
         <br />
         <div>
           <label className="pb-2">
-            Mô tả <span className="text-red-500">*</span>
+            Mô tả lịch trình <span className="text-red-500">*</span>
           </label>
           <textarea
             cols="30"
@@ -135,13 +137,28 @@ const CreateEvent = () => {
             onChange={(e) => setCategory(e.target.value)}
           >
             <option value="Choose a category">Choose a category</option>
-            {categoriesData &&
-              categoriesData.map((i) => (
+            {categories1Data &&
+              categories1Data.map((i) => (
                 <option value={i.title} key={i.title}>
                   {i.title}
                 </option>
               ))}
           </select>
+        </div>
+        <br />
+        <div>
+          <label className="pb-2">
+            Số lượng khách tối đa trên 1 tour
+            <span className="text-red-500">*</span>
+          </label>
+          <input
+            type="text"
+            name="maxgroupsize"
+            value={maxGroupSize}
+            className="mt-2 appearance-none block w-full px-3 h-[35px] border border-gray-300 rounded-[3px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+            onChange={(e) => setMaxGroupSize(e.target.value)}
+            placeholder="Enter your tour max group size..."
+          />
         </div>
         <br />
         <div>
@@ -196,7 +213,7 @@ const CreateEvent = () => {
         <br />
         <div>
           <label className="pb-2">
-            Số lượng khách tối đa <span className="text-red-500">*</span>
+           Tổng số lượng khách tối đa <span className="text-red-500">*</span>
           </label>
           <input
             type="number"
@@ -226,7 +243,7 @@ const CreateEvent = () => {
         <br />
         <div>
           <label className="pb-2">
-          Ngày kết thúc sự kiện <span className="text-red-500">*</span>
+            Ngày kết thúc sự kiện <span className="text-red-500">*</span>
           </label>
           <input
             type="date"

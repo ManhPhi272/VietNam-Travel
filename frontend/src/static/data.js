@@ -206,6 +206,160 @@ export const brandingData = [
   },
 ];
 
+export const dateTravel = [
+  {
+    id: 1,
+    date: 10,
+  },
+  {
+    id: 2,
+    date: 11,
+  },
+  {
+    id: 3,
+    date: 12,
+  },
+  {
+    id: 4,
+    date: 13,
+  },
+  {
+    id: 5,
+    date: 14,
+  },
+];
+
+//categories1 data
+
+export const categories1Data = [
+  {
+    id: 1,
+    title: "Du lịch Hạ Long Cát Bà",
+    subTitle: "",
+    image_Url:
+      "https://www.vietnambooking.com/wp-content/uploads/2017/11/tour-du-lich-ha-long-cat-ba-3-ngay-2-dem-4.jpg",
+  },
+  {
+    id: 2,
+    title: "Du lịch Hạ Long Sapa",
+    subTitle: "",
+    image_Url:
+      "https://hoangkhoitravel.com/img_data/images/Tour-Mien-Tay-3-ngay-2-dem-2023.jpg",
+  },
+  {
+    id: 3,
+    title: "Du lịch Đà Nẵng",
+    subTitle: "",
+    image_Url:
+      "https://hoangkhoitravel.com/img_data/images/Tour-Mien-Tay-3-ngay-2-dem-2023.jpg",
+  },
+  {
+    id: 4,
+    title: "Du lịch Vũng Tàu Côn Đảo",
+    subTitle: "",
+    image_Url:
+      "https://hoangkhoitravel.com/img_data/images/Tour-Mien-Tay-3-ngay-2-dem-2023.jpg",
+  },
+  {
+    id: 5,
+    title: "Du lịch Miền Tây",
+    subTitle: "",
+    image_Url:
+      "https://hoangkhoitravel.com/img_data/images/Tour-Mien-Tay-3-ngay-2-dem-2023.jpg",
+  },
+  {
+    id: 6,
+    title: "Du lịch Phan Thiết",
+    subTitle: "",
+    image_Url:
+      "https://images2.thanhnien.vn/Uploaded/linhnt-qc/2021_10_11/nova1-6083.jpeg",
+  },
+  {
+    id: 7,
+    title: "Du lịch Đông Bắc,Tây Bắc",
+    subTitle: "",
+    image_Url:
+      "https://www.vietnambooking.com/wp-content/uploads/2018/01/tour-mien-bac-24-1-2018-3-300x200.jpg",
+  },
+  {
+    id: 8,
+    title: "Du lịch Đà Lạt",
+    subTitle: "",
+    image_Url:
+      "https://www.vietnambooking.com/wp-content/uploads/2017/03/du-lich-da-lat-thang-3-7.jpg",
+  },
+  {
+    id: 9,
+    title: "Du lịch Phan Thiết",
+    subTitle: "",
+    image_Url:
+      "https://www.vietnambooking.com/wp-content/uploads/2012/06/bai-xep-300x194.jpg",
+  },
+  {
+    id: 10,
+    title: "Du lịch Phú Quốc",
+    subTitle: "",
+    image_Url:
+      "https://nucuoimekong.com/wp-content/uploads/kinh-nghiem-du-lich-phu-quoc-tu-a-den-z.jpg",
+  },
+  {
+    id: 11,
+    title: "Du lịch Thái Lan",
+    subTitle: "",
+    image_Url:
+      "https://nucuoimekong.com/wp-content/uploads/kinh-nghiem-du-lich-phu-quoc-tu-a-den-z.jpg",
+  },
+  {
+    id: 12,
+    title: "Du lịch Trung Quốc",
+    subTitle: "",
+    image_Url:
+      "https://nucuoimekong.com/wp-content/uploads/kinh-nghiem-du-lich-phu-quoc-tu-a-den-z.jpg",
+  },
+  {
+    id: 13,
+    title: "Du lịch Nhật Bản",
+    subTitle: "",
+    image_Url:
+      "https://nucuoimekong.com/wp-content/uploads/kinh-nghiem-du-lich-phu-quoc-tu-a-den-z.jpg",
+  },
+  {
+    id: 14,
+    title: "Du lịch Hàn",
+    subTitle: "",
+    image_Url:
+      "https://nucuoimekong.com/wp-content/uploads/kinh-nghiem-du-lich-phu-quoc-tu-a-den-z.jpg",
+  },
+  {
+    id: 15,
+    title: "Tour các lễ hội",
+    subTitle: "",
+    image_Url:
+      "https://nucuoimekong.com/wp-content/uploads/kinh-nghiem-du-lich-phu-quoc-tu-a-den-z.jpg",
+  },
+  {
+    id: 16,
+    title: "Tour du lịch xuyên việt",
+    subTitle: "",
+    image_Url:
+      "https://nucuoimekong.com/wp-content/uploads/kinh-nghiem-du-lich-phu-quoc-tu-a-den-z.jpg",
+  },
+  {
+    id: 17,
+    title: "Tour du lịch cuối tuần",
+    subTitle: "",
+    image_Url:
+      "https://nucuoimekong.com/wp-content/uploads/kinh-nghiem-du-lich-phu-quoc-tu-a-den-z.jpg",
+  },
+  {
+    id: 18,
+    title: "Tour tuần trang mật",
+    subTitle: "",
+    image_Url:
+      "https://nucuoimekong.com/wp-content/uploads/kinh-nghiem-du-lich-phu-quoc-tu-a-den-z.jpg",
+  },
+];
+
 // categories data
 export const categoriesData = [
   {

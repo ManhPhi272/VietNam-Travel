@@ -49,6 +49,54 @@ export const getAllProductsShop = (id) => async (dispatch) => {
   }
 };
 
+// get single product
+export const getSingleProduct = (id) => async (dispatch) => {
+  try {
+    dispatch({
+      type: "getSingleProductRequest",
+    });
+
+    const { data } = await axios.get(
+      `${server}/product/get-single-product/${id}`
+    );
+    dispatch({
+      type: "getSingleProductSuccess",
+      payload: data.product,
+    });
+  } catch (error) {
+    dispatch({
+      type: "getSingleProductFailed",
+      payload: error.response.data.message,
+    });
+  }
+};
+
+// update product of a shop
+export const updateProduct = (product) => async (dispatch) => {
+  try {
+    dispatch({
+      type: "updateProductRequest",
+    });
+
+    const config = { headers: { "Content-Type": "application/json" } };
+    const { data } = await axios.put(
+      `${server}/product/update-shop-product/${product._id}`,
+      product,
+      config
+    );
+
+    dispatch({
+      type: "updateProductSuccess",
+      payload: data.message,
+    });
+  } catch (error) {
+    dispatch({
+      type: "updateProductFailed",
+      payload: error.response.data.message,
+    });
+  }
+};
+
 // delete product of a shop
 export const deleteProduct = (id) => async (dispatch) => {
   try {

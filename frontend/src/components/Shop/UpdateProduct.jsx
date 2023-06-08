@@ -1,18 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { AiOutlinePlusCircle } from "react-icons/ai";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate } from "react-router-dom";
-import { createProduct } from "../../redux/actions/product";
-import { categories1Data } from "../../static/data";
+import { useNavigate, useParams } from "react-router-dom";
+import { updateProduct, getSingleProduct } from "../../redux/actions/product";
+import { categoriesData } from "../../static/data";
 import { toast } from "react-toastify";
 
-const CreateProduct = () => {
+const UpdateProduct = () => {
   const { seller } = useSelector((state) => state.seller);
-  const { success, error } = useSelector((state) => state.products);
+  const { product, success, error } = useSelector((state) => state.products);
+  const { productId } = useParams();
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const [images, setImages] = useState([]);
+  const [oldImages, setOldImages] = useState([]);
   const [name, setName] = useState("");
   const [description, setDescription] = useState("");
   const [category, setCategory] = useState("");
@@ -23,14 +25,42 @@ const CreateProduct = () => {
   const [schedule, setSchedule] = useState("");
   const [maxGroupSize, setMaxGroupSize] = useState("");
 
+  // useEffect(() => {
+  //   if (error) {
+  //     toast.error(error);
+  //   } else {
+  //     if (success) {
+  //       toast.success("Cập nhật thành công!");
+  //       navigate("/dashboard");
+  //       window.location.reload();
+  //     } else {
+  //       if (!product.name || product._id !== productId) {
+  //         dispatch(getSingleProduct(productId));
+  //       } else {
+  //         setName(product.name);
+  //         setDescription(product.description);
+  //         setCategory(product.category);
+  //         setTags(product.tags);
+  //         setOriginalPrice(product.originalPrice);
+  //         setDiscountPrice(product.discountPrice);
+  //         setStock(product.stock);
+  //         setSchedule(product.schedule);
+  //         setMaxGroupSize(product.maxGroupSize);
+  //         setImages(product.images);
+  //       }
+  //     }
+  //   }
+  // }, [product, dispatch, productId, error, success]);
+
   useEffect(() => {
     if (error) {
       toast.error(error);
-    }
-    if (success) {
-      toast.success("Tour tạo thành công!");
-      navigate("/dashboard");
-      window.location.reload();
+    } else {
+      if (success) {
+        toast.success("Cập nhật thành công!");
+        navigate("/dashboard");
+        window.location.reload();
+      }
     }
   }, [dispatch, error, success]);
 
@@ -45,28 +75,38 @@ const CreateProduct = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    const newForm = new FormData();
-
-    images.forEach((image) => {
-      newForm.append("images", image);
-    });
-    newForm.append("name", name);
-    newForm.append("description", description);
-    newForm.append("category", category);
-    newForm.append("tags", tags);
-    newForm.append("schedule", schedule);
-    newForm.append("maxGroupSize", maxGroupSize);
-    newForm.append("originalPrice", originalPrice);
-    newForm.append("discountPrice", discountPrice);
-    newForm.append("stock", stock);
-    newForm.append("shopId", seller._id);
-    dispatch(createProduct(newForm));
+    dispatch(
+      updateProduct({
+        _id: productId,
+        name,
+        description,
+        category,
+        tags,
+        schedule,
+        originalPrice,
+        discountPrice,
+        stock,
+        maxGroupSize,
+        images,
+      })
+    );
+    console.log(
+      name,
+      description,
+      category,
+      tags,
+      schedule,
+      originalPrice,
+      discountPrice,
+      stock,
+      maxGroupSize,
+      images
+    );
   };
 
   return (
     <div className="w-[90%] 800px:w-[50%] bg-white  shadow h-[80vh] rounded-[4px] p-3 overflow-y-scroll">
-      <h5 className="text-[30px] font-Poppins text-center">Tạo tour</h5>
+      <h5 className="text-[30px] font-Poppins text-center">Cập nhật tour</h5>
       {/* create product form */}
       <form onSubmit={handleSubmit}>
         <br />
@@ -111,7 +151,7 @@ const CreateProduct = () => {
             onChange={(e) => setCategory(e.target.value)}
           >
             <option value="Choose a category">Choose a category</option>
-            {/* {categoriesData &&
+            {categoriesData &&
               categoriesData.map((i) => (
                 <option value={i.title} key={i.title}>
                   {i.title} <br />
@@ -124,12 +164,6 @@ const CreateProduct = () => {
                       --{mysublinks.title}
                     </option>
                   ))}
-                </option>
-              ))} */}
-            {categories1Data &&
-              categories1Data.map((i) => (
-                <option value={i.title} key={i.title}>
-                  {i.title} <br />
                 </option>
               ))}
           </select>
@@ -244,7 +278,7 @@ const CreateProduct = () => {
           <div>
             <input
               type="submit"
-              value="Tạo"
+              value="Cập nhật"
               className="mt-2 cursor-pointer appearance-none text-center block w-full px-3 h-[35px] border border-gray-300 rounded-[3px] placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
             />
           </div>
@@ -254,4 +288,4 @@ const CreateProduct = () => {
   );
 };
 
-export default CreateProduct;
+export default UpdateProduct;
